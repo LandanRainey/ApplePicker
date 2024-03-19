@@ -13,6 +13,7 @@ public class ApplePicker : MonoBehaviour
 	public float basketSpacingY = 2f;
 	public List<GameObject> basketList;
 	
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,11 @@ public class ApplePicker : MonoBehaviour
 	public void appleMissed(){
 		//destroy all of the falling apples
 		GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
+		GameObject[] goldAppleArray = GameObject.FindGameObjectsWithTag("GoldApple");
 		foreach(GameObject tempGO in appleArray){
+			Destroy(tempGO);
+		}
+		foreach(GameObject tempGO in goldAppleArray){
 			Destroy(tempGO);
 		}
 		
@@ -44,7 +49,7 @@ public class ApplePicker : MonoBehaviour
 		
 		// if there are no Baskets left, restart the gameObject
 		if(basketList.Count == 0){
-			SceneManager.LoadScene("SampleScene");
+			SceneManager.LoadScene("GameOver");
 		}
 	}
 }
